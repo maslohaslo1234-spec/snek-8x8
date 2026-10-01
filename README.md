@@ -1,6 +1,9 @@
+<img width="4032" height="3024" alt="ob" src="https://github.com/user-attachments/assets/14e4fd29-3b6c-466e-807a-b1c4a9afb4c7" />
 # Snek 8x8
 
 A pocket-sized arcade console powered by an ESP32. It runs Snake on an 8x8 LED matrix and Flappy Bird on a 128x64 OLED display, with button controls, sound, and saved high scores.
+
+<img width="1536" height="2048" alt="board" src="https://github.com/user-attachments/assets/762cf891-943f-4496-8158-91227e8a3113" />
 
 This project is being built for [Hack Club Half Life](https://halflife.hackclub.com/).
 
