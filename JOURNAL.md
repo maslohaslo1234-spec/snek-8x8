@@ -14,19 +14,29 @@
 
 ## Contents
 
-1. [2026-10-01 — Bought a new soldering iron and wanted to test it, so I got a cheap Chinese practice kit: A41Z-DIY, a 64-LED SMD dot matrix board. ![board](https://halflife.hackclub-assets.com/hackclub-half-life/sess](#2026-10-01-bought-a-new-soldering-iron-and-wanted-to-test-it)
+1. [2026-10-01 — Bought a new soldering iron and wanted to test it, so I got a cheap Chinese practice kit: A41Z-DIY, a 64-LED SMD dot matrix board.](#2026-10-01-bought-a-new-soldering-iron-and-wanted-to-test-it)
 
 ## Design
 
-### 2026-10-01 — Bought a new soldering iron and wanted to test it, so I got a cheap Chinese practice kit: A41Z-DIY, a 64-LED SMD dot matrix board. ![board](https://halflife.hackclub-assets.com/hackclub-half-life/sess
+### 2026-10-01 — Bought a new soldering iron and wanted to test it, so I got a cheap Chinese practice kit: A41Z-DIY, a 64-LED SMD dot matrix board.
 
 **3.5h**
 
-Bought a new soldering iron and wanted to test it, so I got a cheap Chinese practice kit: A41Z-DIY, a 64-LED SMD dot matrix board. ![board](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/D1H5wjMaoqfsZfeTslugwWB4nIQcEzNR/f0df3340e12b3f06700444bdcdda0bd6d988110b7fd4497515e4a98d5f53ceac.jpeg)  No plan to build a game — just wanted to solder it and see if it worked. Soldered everything except the LEDs first, then all 64 of them — only to find I'd put every single one in backwards. Desoldered and redid all 64, then realized I'd lost the U1 chip that was supposed to drive the test animations, I couldn't actually test the board.
+Bought a new soldering iron and wanted to test it, so I got a cheap Chinese practice kit: A41Z-DIY, a 64-LED SMD dot matrix board.
 
-![U1](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/D1H5wjMaoqfsZfeTslugwWB4nIQcEzNR/8c706868fa3fa6e5282efd097e6e7ae60dc99f63a03b5b45efab67432c321b20.jpeg)
+![board](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/D1H5wjMaoqfsZfeTslugwWB4nIQcEzNR/f0df3340e12b3f06700444bdcdda0bd6d988110b7fd4497515e4a98d5f53ceac.jpeg)
+
+ No plan to build a game — just wanted to solder it and see if it worked. Soldered everything except the LEDs first
+
+![T,R](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/D1H5wjMaoqfsZfeTslugwWB4nIQcEzNR/882835883d94fd86f096e807e4b2b224bc8562e32492cf933d92f01a992724ca.jpeg)
+
+ then all 64 of them — only to find I'd put every single one in backwards. Desoldered and redid all 64
 
 ![LEDs](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/D1H5wjMaoqfsZfeTslugwWB4nIQcEzNR/a186260fef248d8feb24fafa02da8a8110172d61ec88db020d80baf03926fd95.jpeg)
+
+ Then realized I'd lost the U1 chip that was supposed to drive the test animations, I couldn't actually test the board.
+
+![U1](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/D1H5wjMaoqfsZfeTslugwWB4nIQcEzNR/8c706868fa3fa6e5282efd097e6e7ae60dc99f63a03b5b45efab67432c321b20.jpeg)
 
 ![kit](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/D1H5wjMaoqfsZfeTslugwWB4nIQcEzNR/7f74c1fca741ad0ba7516c9b979791903a4f0be5c789d48a64d57177a5df2f18.jpeg)
 
