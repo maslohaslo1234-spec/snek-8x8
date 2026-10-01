@@ -18,7 +18,7 @@
 | [Female Pin Headers](https://botland.com.pl/gniazda-szpilkowe-goldpin/20029-listwa-goldpin-1x40-zenska-raster-254mm-10szt-justpi-5904422329174.html) | Sockets for ESP32, OLED, and Matrix so they are removable from the PCB | 1 | $2.55 | $2.55 | [Botland](https://botland.com.pl/gniazda-szpilkowe-goldpin/20029-listwa-goldpin-1x40-zenska-raster-254mm-10szt-justpi-5904422329174.html) |
 | [Custom PCB](https://jlcpcb.com) | Main circuit board connecting ESP32, OLED, LED matrix, TP4056 charger, and controls | 1 | $2.00 | $2.00 | [JLCPCB](https://jlcpcb.com) |
 | **Parts subtotal** | — | — | — | **$13.48** | — |
-| **Tax & shipping** | — | — | — | **$12.00** | — |
-| **Total** | — | — | — | **$25.48** | — |
+| **Tax & shipping** | — | — | — | **$10.00** | — |
+| **Total** | — | — | — | **$23.48** | — |
 
-$4.52 left of the tier's funding.
+$6.52 left of the tier's funding.
