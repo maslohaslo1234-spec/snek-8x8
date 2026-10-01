@@ -14,16 +14,16 @@
 
 ## Contents
 
-1. [2026-10-01 — Soldering the 8x8 LED matrix kit](#2026-10-01-soldering-the-8x8-led-matrix-kit)
+1. [2026-10-01 — ### Soldering the 8x8 LED matrix kit](#2026-10-01-soldering-the-8x8-led-matrix-kit)
 2. [2026-10-01 — # From a dead chip to a playable console](#2026-10-01-from-a-dead-chip-to-a-playable-console)
 
 ## Design
 
-### 2026-10-01 — Soldering the 8x8 LED matrix kit
+### 2026-10-01 — ### Soldering the 8x8 LED matrix kit
 
 **3.5h**
 
-Soldering the 8x8 LED matrix kit
+### Soldering the 8x8 LED matrix kit
 
 Bought a new soldering iron and wanted to test it, so I got a cheap Chinese practice kit: A41Z-DIY, a 64-LED SMD dot matrix board.
 
