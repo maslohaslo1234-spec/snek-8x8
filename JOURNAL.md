@@ -6,7 +6,7 @@
 > [!NOTE]
 > This devlog is mirrored from [Half Life](https://halflife.hackclub.com). Editing it here will not change the platform's copy, and the next sync overwrites this file.
 
-> I'm building a pocket-sized handheld console that plays Snake on an 8×8 LED matrix, powered by an ESP32. The matrix isn't an off-the-shelf module. I soldered it myself from a DIY kit, LED by LED, which taught me a lot about how matrix displays are wired and driven. The console also has an OLED for score and menus and a buzzer for sound effects. The firmware is already fairly advanced: it has menus, sound and a two-language interface (Polish and English). I should be upfront that most of the code was written with AI assistance, because programming is not my strong side. My part of the project is the hardware: the soldering, wiring, electronics design and enclosure. That's also what I want to get better at in this program. I already have a working prototype on a breadboard. Now I want to turn it into a real, portable device: 	•	a custom PCB with the ESP32, the LED matrix, OLED, buzzer, buttons and [battery/USB-C charging], 	•	a 3D-printed enclosure designed in CAD, with a D-pad and action buttons, 	•	clean power and wiring, so it works without a breadboard. My goal is to learn the full path from prototype to finished product: schematic, PCB layout, enclosure design and assembly. Parts: ESP32, hand-soldered 8×8 LED matrix, 0.96" OLED, buzzer, tact switches, [battery + charger module], PCB, 3D-printed case.
+> I'm building a pocket-sized handheld console that plays Snake on an 8×8 LED matrix, powered by an ESP32. The matrix isn't an off-the-shelf module. I soldered it myself from a DIY kit, LED by LED, which taught me a lot about how matrix displays are wired and driven. The console also has an OLED for score and menus and a buzzer for sound effects. The firmware is already fairly advanced: it has menus, sound and a two-language interface (Polish and English). I should be upfront that most of the code was written with AI assistance, because programming is not my strong side. My part of the project is the hardware: the soldering, wiring, electronics design and enclosure. That's also what I want to get better at in this program. I already have a working prototype on a breadboard. Now I want to turn it into a real, portable device: 	•	a custom PCB with the ESP32, the LED matrix, OLED, buzzer, buttons  	•	a 3D-printed enclosure designed in CAD, with a D-pad and action    buttons, 	•	clean power and wiring, so it works without a breadboard. My goal is to learn the full path from prototype to finished product: schematic, PCB layout, enclosure design and assembly. Parts: ESP32, hand-soldered 8×8 LED matrix, 0.96" OLED, buzzer, tact switches,  PCB, 3D-printed case.
 
 | Week | Tier | Hours logged | Entries |
 | --- | --- | --- | --- |
@@ -14,13 +14,15 @@
 
 ## Contents
 
-1. [2026-10-01 — Bought a new soldering iron and wanted to test it, so I got a cheap Chinese practice kit: A41Z-DIY, a 64-LED SMD dot matrix board.](#2026-10-01-bought-a-new-soldering-iron-and-wanted-to-test-it)
+1. [2026-10-01 — Soldering the 8x8 LED matrix kit](#2026-10-01-soldering-the-8x8-led-matrix-kit)
 
 ## Design
 
-### 2026-10-01 — Bought a new soldering iron and wanted to test it, so I got a cheap Chinese practice kit: A41Z-DIY, a 64-LED SMD dot matrix board.
+### 2026-10-01 — Soldering the 8x8 LED matrix kit
 
 **3.5h**
+
+Soldering the 8x8 LED matrix kit
 
 Bought a new soldering iron and wanted to test it, so I got a cheap Chinese practice kit: A41Z-DIY, a 64-LED SMD dot matrix board.
 
