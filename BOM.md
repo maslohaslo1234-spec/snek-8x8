@@ -17,7 +17,7 @@
 | [Slide Switch 2-position](https://botland.com.pl/przelaczniki-suwakowe-i-przesuwne/4839-przelacznik-suwakowy-mss-2245-2-pozycyjny-prosty-5904422304188.html) | Main power ON/OFF switch | 1 | $1.01 | $1.01 | [Botland](https://botland.com.pl/przelaczniki-suwakowe-i-przesuwne/4839-przelacznik-suwakowy-mss-2245-2-pozycyjny-prosty-5904422304188.html) |
 | [Female Pin Headers](https://botland.com.pl/gniazda-szpilkowe-goldpin/20029-listwa-goldpin-1x40-zenska-raster-254mm-10szt-justpi-5904422329174.html) | Sockets for ESP32, OLED, and Matrix so they are removable from the PCB | 1 | $2.55 | $2.55 | [Botland](https://botland.com.pl/gniazda-szpilkowe-goldpin/20029-listwa-goldpin-1x40-zenska-raster-254mm-10szt-justpi-5904422329174.html) |
 | **Parts subtotal** | — | — | — | **$11.48** | — |
-| **Tax & shipping** | — | — | — | **$0.00** | — |
-| **Total** | — | — | — | **$11.48** | — |
+| **Tax & shipping** | — | — | — | **$10.00** | — |
+| **Total** | — | — | — | **$21.48** | — |
 
-$18.52 left of the tier's funding.
+$8.52 left of the tier's funding.
