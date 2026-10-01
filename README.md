@@ -59,7 +59,7 @@ The firmware uses the ESP32 Arduino core 3.x timer API. If compilation fails aro
 ## Repository layout
 
 - `firmware/esp32_snake/` - current ESP32 firmware
-- `archive/arduino_snake/` - earlier Arduino version
+- `legacy/arduino_snake/` - earlier Arduino firmware, kept for reference
 
 ## Project log
 
