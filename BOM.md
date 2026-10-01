@@ -19,7 +19,7 @@
 | [Custom PCB](https://jlcpcb.com) | Main circuit board connecting ESP32, OLED, LED matrix, TP4056 charger, and controls | 1 | $2.00 | $2.00 | [JLCPCB](https://jlcpcb.com) |
 | [5V Step-Up Voltage Regulator](https://botland.com.pl/przetwornice-step-up/22475-u3v16f5-przetwornica-step-up-5v-2a-pololu-4941.html) | Steps up 3.7V Li-Po battery voltage to stable 5V for ESP32 it has USB because it was the cheapest | 1 | $1.34 | $1.34 | [Botland](https://botland.com.pl/przetwornice-step-up/22475-u3v16f5-przetwornica-step-up-5v-2a-pololu-4941.html) |
 | **Parts subtotal** | — | — | — | **$14.82** | — |
-| **Tax & shipping** | — | — | — | **$9.50** | — |
-| **Total** | — | — | — | **$24.32** | — |
+| **Tax & shipping** | — | — | — | **$12.00** | — |
+| **Total** | — | — | — | **$26.82** | — |
 
-$5.68 left of the tier's funding.
+$3.18 left of the tier's funding.
