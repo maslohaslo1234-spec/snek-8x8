@@ -143,10 +143,10 @@ void drawFlappyOLED() {
 
   display.setTextSize(1);
   display.setCursor(2, 2);
-  display.print(F("W:"));
+  display.print(localizedText(F("S:"), F("W:")));
   display.print(score);
   display.setCursor(70, 2);
-  display.print(F("R:"));
+  display.print(localizedText(F("BEST:"), F("REK:")));
   display.print(currentHighScore());
 
   if (isPaused || isGameOver) {
@@ -162,20 +162,20 @@ void drawFlappyOLED() {
     if (isPaused) {
       display.setTextSize(2);
       display.setCursor(boxX + 22, boxY + 6);
-      display.print(F("PAUZA"));
+      display.print(localizedText(F("PAUSED"), F("PAUZA")));
       display.setTextSize(1);
       display.setCursor(boxX + 8, boxY + 28);
-      display.print(F("TRZYMAJ = MENU"));
+      display.print(localizedText(F("HOLD = MENU"), F("PRZYTRZ = MENU")));
     } else {
       display.setTextSize(1);
-      display.setCursor(boxX + 18, boxY + 6);
-      display.print(F("KONIEC GRY!"));
+      display.setCursor(languageSetting == 0 ? boxX + 22 : boxX + 18, boxY + 6);
+      display.print(localizedText(F("GAME OVER!"), F("KONIEC GRY!")));
       display.setCursor(boxX + 10, boxY + 18);
-      display.print(F("WYNIK: "));
+      display.print(localizedText(F("SCORE: "), F("WYNIK: ")));
       display.print(score);
       if (isNewHighScore) {
         display.setCursor(boxX + 10, boxY + 28);
-        display.print(F("* NOWY REKORD! *"));
+        display.print(localizedText(F("* NEW RECORD! *"), F("* NOWY REKORD! *")));
       }
     }
   }

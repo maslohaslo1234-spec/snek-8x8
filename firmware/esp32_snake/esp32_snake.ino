@@ -33,6 +33,7 @@ const int EEPROM_ADDR_DIFFICULTY = 1;
 const int EEPROM_ADDR_WALLS = 2;
 const int EEPROM_ADDR_MUSIC_MENU = 3;
 const int EEPROM_ADDR_MUSIC_GAME = 4;
+const int EEPROM_ADDR_LANGUAGE = 5;
 const int EEPROM_ADDR_HIGHSCORE_EASY = 8;
 const int EEPROM_ADDR_HIGHSCORE_MED = 12;
 const int EEPROM_ADDR_HIGHSCORE_HARD = 16;
@@ -73,11 +74,12 @@ bool oledDirty = true;
 
 byte menuState = 0;              
 byte mainMenuCursor = 0;         
-byte zasadyCursor = 0;           
+byte settingsCursor = 0;
 byte muzykaCursor = 0;           
 
 byte difficultySetting = 1;
 bool wallsEnabled = true;
+byte languageSetting = 0; // 0: English, 1: Polish.
 
 byte musicMenuTrack = 0;
 byte musicGameTrack = 1;

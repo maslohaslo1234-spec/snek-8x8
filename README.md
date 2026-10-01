@@ -10,6 +10,7 @@ This project is being built for [Hack Club Half Life](https://halflife.hackclub.
 - Three difficulty levels
 - Optional walls in Snake, bonus food, and a high-score table
 - High scores and settings saved between reboots
+- English and Polish interface with a saved language preference
 - Menu and in-game music, sound effects, and an idle screensaver
 
 ## Hardware
@@ -44,7 +45,7 @@ Buttons use the ESP32's internal pull-ups: connect each button between its GPIO 
 | Right | Turn right | Not used |
 | Action | Pause; press again to resume | Flap |
 
-While paused, hold Action for about one second to return to the menu. In menus, Left and Right move through the options and Action selects one.
+While paused, hold Action for about one second to return to the menu. In menus, Left and Right move through the options and Action selects one. Change the interface language in Settings; the selection is saved between reboots.
 
 ## Build and upload
 

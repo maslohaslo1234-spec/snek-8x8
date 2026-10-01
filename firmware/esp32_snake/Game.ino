@@ -26,6 +26,7 @@ void loadSettings() {
     wallsEnabled = true;
     musicMenuTrack = 0;
     musicGameTrack = 1;
+    languageSetting = 0;
     saveSettings();
     return;
   }
@@ -40,6 +41,9 @@ void loadSettings() {
 
   musicGameTrack = EEPROM.read(EEPROM_ADDR_MUSIC_GAME);
   if (musicGameTrack > 3) musicGameTrack = 1;
+
+  languageSetting = EEPROM.read(EEPROM_ADDR_LANGUAGE);
+  if (languageSetting > 1) languageSetting = 0;
 
   for (byte i = 0; i < 3; i++) {
     EEPROM.get(highScoreAddressFor(i), highScores[i]);
@@ -58,6 +62,7 @@ void saveSettings() {
   EEPROM.write(EEPROM_ADDR_WALLS, wallsEnabled ? 1 : 0);
   EEPROM.write(EEPROM_ADDR_MUSIC_MENU, musicMenuTrack);
   EEPROM.write(EEPROM_ADDR_MUSIC_GAME, musicGameTrack);
+  EEPROM.write(EEPROM_ADDR_LANGUAGE, languageSetting);
 
   for (byte i = 0; i < 3; i++) {
     EEPROM.put(highScoreAddressFor(i), highScores[i]);

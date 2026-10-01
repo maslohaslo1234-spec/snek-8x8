@@ -73,14 +73,14 @@ void handleInput() {
     else if (menuState > 0 && !gameStarted) {
       if (currentLeft == LOW && lastLeftState == HIGH) {
         if (menuState == 1) mainMenuCursor = (mainMenuCursor + 3) % 4;
-        else if (menuState == 2) zasadyCursor = (zasadyCursor + 2) % 3;
+        else if (menuState == 2) settingsCursor = (settingsCursor + 3) % 4;
         else if (menuState == 3) muzykaCursor = (muzykaCursor + 2) % 3;
         oledDirty = true;
         lastButtonTime = millis();
       }
       if (currentRight == LOW && lastRightState == HIGH) {
         if (menuState == 1) mainMenuCursor = (mainMenuCursor + 1) % 4;
-        else if (menuState == 2) zasadyCursor = (zasadyCursor + 1) % 3;
+        else if (menuState == 2) settingsCursor = (settingsCursor + 1) % 4;
         else if (menuState == 3) muzykaCursor = (muzykaCursor + 1) % 3;
         oledDirty = true;
         lastButtonTime = millis();
@@ -89,17 +89,20 @@ void handleInput() {
         if (menuState == 1) {
           if (mainMenuCursor == 0) { menuState = 0; resetGame(); }
           else if (mainMenuCursor == 1) { menuState = 0; resetFlappy(); }
-          else if (mainMenuCursor == 2) { menuState = 2; zasadyCursor = 0; }
+          else if (mainMenuCursor == 2) { menuState = 2; settingsCursor = 0; }
           else if (mainMenuCursor == 3) { menuState = 3; muzykaCursor = 0; }
         }
         else if (menuState == 2) {
-          if (zasadyCursor == 0) {
+          if (settingsCursor == 0) {
             difficultySetting = (difficultySetting + 1) % 3;
             saveSettings();
-          } else if (zasadyCursor == 1) {
+          } else if (settingsCursor == 1) {
             wallsEnabled = !wallsEnabled;
             saveSettings();
-          } else if (zasadyCursor == 2) {
+          } else if (settingsCursor == 2) {
+            languageSetting = (languageSetting + 1) % 2;
+            saveSettings();
+          } else if (settingsCursor == 3) {
             menuState = 1;
           }
         }

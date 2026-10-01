@@ -1,3 +1,10 @@
+const __FlashStringHelper* localizedText(
+  const __FlashStringHelper* english,
+  const __FlashStringHelper* polish
+) {
+  return languageSetting == 0 ? english : polish;
+}
+
 void updateOLED() {
   display.clearDisplay();
   display.setTextColor(SSD1306_WHITE);
@@ -24,15 +31,15 @@ void updateOLED() {
       display.fillRoundRect(14, 42, 100, 15, 3, SSD1306_WHITE);
       display.setTextColor(SSD1306_BLACK);
       display.setCursor(22, 46);
-      display.print(F("NACISNIJ START"));
+      display.print(localizedText(F("PRESS TO START"), F("NACISNIJ START")));
     }
   } else if (menuState > 0 && !gameStarted) {
     display.drawRoundRect(0, 0, 128, 64, 4, SSD1306_WHITE);
     display.setTextSize(1);
 
     if (menuState == 1) {
-      display.setCursor(30, 3);
-      display.print(F("MENU GLOWNE"));
+      display.setCursor(languageSetting == 0 ? 37 : 30, 3);
+      display.print(localizedText(F("MAIN MENU"), F("MENU GLOWNE")));
       display.drawLine(15, 12, 113, 12, SSD1306_WHITE);
 
       display.setCursor(8, 16);
@@ -45,57 +52,60 @@ void updateOLED() {
 
       display.setCursor(8, 40);
       display.print(mainMenuCursor == 2 ? F("> ") : F("  "));
-      display.print(F("ZASADY"));
+      display.print(localizedText(F("SETTINGS"), F("USTAWIENIA")));
 
       display.setCursor(8, 52);
       display.print(mainMenuCursor == 3 ? F("> ") : F("  "));
-      display.print(F("MUZYKA"));
+      display.print(localizedText(F("MUSIC"), F("MUZYKA")));
     }
     else if (menuState == 2) {
-      display.setCursor(45, 3);
-      display.print(F("ZASADY"));
+      display.setCursor(languageSetting == 0 ? 40 : 34, 3);
+      display.print(localizedText(F("SETTINGS"), F("USTAWIENIA")));
       display.drawLine(15, 12, 113, 12, SSD1306_WHITE);
 
       display.setCursor(8, 16);
-      display.print(zasadyCursor == 0 ? F("> ") : F("  "));
-      display.print(F("POZIOM: "));
-      if (difficultySetting == 0) display.print(F("LATWY"));
-      else if (difficultySetting == 1) display.print(F("SREDNI"));
-      else display.print(F("TRUDNY"));
+      display.print(settingsCursor == 0 ? F("> ") : F("  "));
+      display.print(localizedText(F("LEVEL: "), F("POZIOM: ")));
+      if (difficultySetting == 0) display.print(localizedText(F("EASY"), F("LATWY")));
+      else if (difficultySetting == 1) display.print(localizedText(F("MEDIUM"), F("SREDNI")));
+      else display.print(localizedText(F("HARD"), F("TRUDNY")));
 
       display.setCursor(8, 28);
-      display.print(zasadyCursor == 1 ? F("> ") : F("  "));
-      display.print(F("SCIANY: "));
-      display.print(wallsEnabled ? F("TAK") : F("NIE"));
+      display.print(settingsCursor == 1 ? F("> ") : F("  "));
+      display.print(localizedText(F("WALLS: "), F("SCIANY: ")));
+      display.print(wallsEnabled ? localizedText(F("ON"), F("TAK")) : localizedText(F("OFF"), F("NIE")));
 
       display.setCursor(8, 40);
-      display.print(zasadyCursor == 2 ? F("> ") : F("  "));
-      display.print(F("[ WSTECZ ]"));
+      display.print(settingsCursor == 2 ? F("> ") : F("  "));
+      display.print(localizedText(F("LANGUAGE: "), F("JEZYK: ")));
+      display.print(languageSetting == 0 ? F("ENGLISH") : F("POLSKI"));
 
       display.setCursor(8, 52);
-      display.print(F("FB REK: "));
-      display.print(highScoreFlappy);
+      display.print(settingsCursor == 3 ? F("> ") : F("  "));
+      display.print(localizedText(F("[ BACK ]"), F("[ WSTECZ ]")));
     }
     else if (menuState == 3) {
-      display.setCursor(45, 4);
-      display.print(F("MUZYKA"));
+      display.setCursor(languageSetting == 0 ? 49 : 45, 4);
+      display.print(localizedText(F("MUSIC"), F("MUZYKA")));
       display.drawLine(15, 14, 113, 14, SSD1306_WHITE);
 
-      const __FlashStringHelper* trackNames[] = { F("MEGA"), F("TETR"), F("MARIO"), F("OFF") };
+      const __FlashStringHelper* trackNames[] = {
+        F("MEGA"), F("TETR"), F("MARIO"), localizedText(F("OFF"), F("WYLACZ"))
+      };
 
       display.setCursor(10, 18);
       display.print(muzykaCursor == 0 ? F("> ") : F("  "));
-      display.print(F("W MENU: "));
+      display.print(localizedText(F("IN MENU: "), F("W MENU: ")));
       display.print(trackNames[musicMenuTrack]);
 
       display.setCursor(10, 30);
       display.print(muzykaCursor == 1 ? F("> ") : F("  "));
-      display.print(F("W GRZE: "));
+      display.print(localizedText(F("IN GAME: "), F("W GRZE: ")));
       display.print(trackNames[musicGameTrack]);
 
       display.setCursor(10, 42);
       display.print(muzykaCursor == 2 ? F("> ") : F("  "));
-      display.print(F("[ WSTECZ ]"));
+      display.print(localizedText(F("[ BACK ]"), F("[ WSTECZ ]")));
     }
 
   } else if (gameStarted && currentGame == 1) {
@@ -106,14 +116,14 @@ void updateOLED() {
 
     display.setTextSize(1);
     display.setCursor(5, 3);
-    display.print(F("WYNIK"));
+    display.print(localizedText(F("SCORE"), F("WYNIK")));
     display.setTextSize(2);
     display.setCursor(5, 14);
     display.print(score);
 
     display.setTextSize(1);
     display.setCursor(75, 3);
-    display.print(F("REKORD"));
+    display.print(localizedText(F("BEST"), F("REKORD")));
     display.setTextSize(2);
     display.setCursor(75, 14);
     display.print(currentHighScore());
@@ -134,7 +144,7 @@ void updateOLED() {
       display.print(F("s!"));
     } else {
       display.setCursor(5, 42);
-      display.print(F("DLUGOSC: "));
+      display.print(localizedText(F("LENGTH: "), F("DLUGOSC: ")));
       if (snakeLen < 10) display.print('0');
       display.print(snakeLen);
       display.print(F("/64"));
@@ -158,27 +168,27 @@ void updateOLED() {
       if (isPaused) {
         display.setTextSize(2);
         display.setCursor(boxX + 22, boxY + 6);
-        display.print(F("PAUZA"));
+        display.print(localizedText(F("PAUSED"), F("PAUZA")));
         display.setTextSize(1);
         display.setCursor(boxX + 8, boxY + 28);
-        display.print(F("TRZYMAJ = MENU"));
+        display.print(localizedText(F("HOLD = MENU"), F("PRZYTRZ = MENU")));
       } else if (isGameOver) {
         display.setTextSize(1);
         if (isWinner) {
           display.setCursor(boxX + 8, boxY + 6);
-          display.print(F("WYGRANA! 64/64"));
+          display.print(localizedText(F("YOU WIN! 64/64"), F("WYGRANA! 64/64")));
         } else {
-          display.setCursor(boxX + 18, boxY + 6);
-          display.print(F("KONIEC GRY!"));
+          display.setCursor(languageSetting == 0 ? boxX + 22 : boxX + 18, boxY + 6);
+          display.print(localizedText(F("GAME OVER!"), F("KONIEC GRY!")));
         }
         unsigned long totalSec = (gameEndTime - gameStartTime) / 1000;
         display.setCursor(boxX + 10, boxY + 18);
-        display.print(F("CZAS: "));
+        display.print(localizedText(F("TIME: "), F("CZAS: ")));
         display.print(totalSec);
-        display.print(F(" sek."));
+        display.print(localizedText(F(" sec."), F(" sek.")));
         if (isNewHighScore) {
           display.setCursor(boxX + 10, boxY + 28);
-          display.print(F("* NOWY REKORD! *"));
+          display.print(localizedText(F("* NEW RECORD! *"), F("* NOWY REKORD! *")));
         }
       }
     }
