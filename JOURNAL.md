@@ -53,54 +53,56 @@ Bought a new soldering iron and wanted to test it, so I got a cheap Chinese prac
 
 After I lost the U1 chip from my kit, I realised the board still had header pins (OE, VCC, GND, IN, STB, CLK) connected directly to the two 74HC595 shift registers. That meant I could skip the missing chip and drive the matrix myself.
 
-![header pins](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/D1H5wjMaoqfsZfeTslugwWB4nIQcEzNR/732521821490372e12d9ddafcf668fe6d93685af247a53da2dffef3833fd9e65.jpeg)
+![Jumper wires connected to the header pins of the matrix board](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/D1H5wjMaoqfsZfeTslugwWB4nIQcEzNR/732521821490372e12d9ddafcf668fe6d93685af247a53da2dffef3833fd9e65.jpeg)
 
 I connected an Arduino Nano and wrote a test sketch to turn on every LED. I was sure I had killed a few of them while soldering and desoldering, so seeing all 64 light up was a big surprise.
 
-![all light up](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/D1H5wjMaoqfsZfeTslugwWB4nIQcEzNR/3597dc090dc9a3c4eacb1a8d6103f37770ebc44b62aa20f0f541f12f2498ebbd.jpeg)
+![All 64 LEDs lit up during the Nano test sketch](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/D1H5wjMaoqfsZfeTslugwWB4nIQcEzNR/3597dc090dc9a3c4eacb1a8d6103f37770ebc44b62aa20f0f541f12f2498ebbd.jpeg)
 
 With a working matrix and a few buttons on the breadboard, the obvious next step was Snake. I couldn't fit a plus-shaped D-pad on the breadboard layout, so the first version used just two buttons for relative movement (turn left / turn right).
 
-![snek](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/D1H5wjMaoqfsZfeTslugwWB4nIQcEzNR/d4246b203e085b63429f2eaac9de6aada88986e906743db121d234e0d4d4925a.jpeg)
+![First version of Snake running on the matrix](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/D1H5wjMaoqfsZfeTslugwWB4nIQcEzNR/d4246b203e085b63429f2eaac9de6aada88986e906743db121d234e0d4d4925a.jpeg)
 
-## Score, sound, and menus
+### Score, sound, and menus
 
 I needed a place to show the score, so I added a 0.96" I2C OLED display. At first, it caused strange refresh problems and flickering. I fixed it by moving the matrix scanning into a hardware timer interrupt, writing to the shift registers using a custom fast shift-out function instead of `shiftOut()`, and swapping the frame buffer with interrupts temporarily disabled so a half-updated frame is never rendered.
 
-![score](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/D1H5wjMaoqfsZfeTslugwWB4nIQcEzNR/3f12ff4b1e0f9c68e89b3e93b87c584d833ba2c04c8912b1e1fd1eaa7f4632ed.jpeg)
+![OLED showing the score](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/D1H5wjMaoqfsZfeTslugwWB4nIQcEzNR/3f12ff4b1e0f9c68e89b3e93b87c584d833ba2c04c8912b1e1fd1eaa7f4632ed.jpeg)
 
 Next came the buzzer: first a simple looping melody, then I found code for the Super Mario theme online and adapted it. That was easy, so I added Megalovania and the Tetris theme too.
 
-![buzzer](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/D1H5wjMaoqfsZfeTslugwWB4nIQcEzNR/fff7b61fee27e13500e6b75be814b7e52def6beaac6282ed2c61074f4cfe79ac.jpeg)
+![Buzzer added to the breadboard](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/D1H5wjMaoqfsZfeTslugwWB4nIQcEzNR/fff7b61fee27e13500e6b75be814b7e52def6beaac6282ed2c61074f4cfe79ac.jpeg)
 
 With several tracks, I needed a menu, so I built a simple UI on the OLED (one button moves the cursor, the other confirms). After that, I added three difficulty levels, two wall modes (walls kill you vs. wrap around), and bonus food spawning.
 
-## Moving to ESP32
+### Moving to ESP32
 
 The Nano eventually became too limiting, so I moved everything to an ESP32. This was harder than I expected: the AVR timer tricks don't exist on the ESP32, so I had to rewrite the timer interrupt using the ESP32's native timer API. Also, to fix broken audio timing caused by the ESP32's 32-bit architecture, I removed the AVR-specific `PROGMEM` and `pgm_read_word()` calls, reading the note arrays directly from memory.
 
-![esp32](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/D1H5wjMaoqfsZfeTslugwWB4nIQcEzNR/41c440d1a1ba7c24ddcb7b719234edb2f385d47c47d90cd67c9b2666c6b0b60a.jpeg)
+![Circuit rebuilt around the ESP32](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/D1H5wjMaoqfsZfeTslugwWB4nIQcEzNR/41c440d1a1ba7c24ddcb7b719234edb2f385d47c47d90cd67c9b2666c6b0b60a.jpeg)
 
 The upgrade was definitely worth it:
-* **A third button:** Menus now use **Right = Up**, **Left = Down**, and **Third = OK** (in Snake, the controls still turn left/right). The third button also acts as a pause toggle, with a long press on the pause screen returning to the main menu.
-* **Screensavers:** Added idle animations that run on both the OLED and the matrix when left untouched.
+A third button: menus now use Right = Up, Left = Down, and Third = OK (in Snake, the controls still turn left/right). The third button also pauses the game, and a long press on the pause screen returns to the main menu.
+Screensavers: idle animations run on both the OLED and the matrix when the console is left untouched.
 
-![pause](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/D1H5wjMaoqfsZfeTslugwWB4nIQcEzNR/45c597db80933998574f312c2ed10582006b09afcc2a5bf8fbb3f4d710f637de.jpeg)
+![Pause screen on the OLED](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/D1H5wjMaoqfsZfeTslugwWB4nIQcEzNR/45c597db80933998574f312c2ed10582006b09afcc2a5bf8fbb3f4d710f637de.jpeg)
 
 ### Flappy Bird (a side experiment)
 
-Once the ESP32 was running, I wanted a second game to see how flexible the system was. I picked Flappy Bird, but on an 8x8 matrix it's almost unplayable—the screen is only 8 pixels tall, so there's no room to see incoming pipes. My fix was rendering the game on **both displays simultaneously**.
+Once the ESP32 was running, I wanted a second game to see how flexible the system was. I picked Flappy Bird, but on an 8x8 matrix it's almost unplayable: the screen is only 8 pixels tall, so there's no room to see incoming pipes. My fix was rendering the game on **both displays at the same time**.
 
-![flappy](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/D1H5wjMaoqfsZfeTslugwWB4nIQcEzNR/cd015ae03cf98cc11cc5776de1d8bd76b2299baaa862d2d2243bc4d47c854bfd.jpeg)
+![Flappy Bird shown on the OLED](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/D1H5wjMaoqfsZfeTslugwWB4nIQcEzNR/c4b25cad04382e1ac755b5fdfdac72a07b4934376721fbcd177b3b161facd724.webp)
 
-Controls use the same setup: the action button flaps, and the left button pauses. It's less polished than Snake, so I treat it as a fun side experiment, but it proved the console can host multiple games.
+Controls use the same setup: the action button flaps, and the left button pauses. It's less polished than Snake, so I treat it as a side experiment, but it proved the console can host multiple games.
 
-## Saving data
+### Saving data
 
-High scores and settings are stored via the `EEPROM` library with `EEPROM.commit()`, so they survive power loss. Sound settings are stored separately for the main menu and for in-game audio.
+High scores and settings are stored with the `EEPROM` library and `EEPROM.commit()`, so they survive power loss. Sound settings are stored separately for the main menu and for in-game audio.
 
-![mess](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/D1H5wjMaoqfsZfeTslugwWB4nIQcEzNR/7c136c36920a04aab8eab672ca3e5cd42e81a3cd019fee5cd757c799105e2eaa.jpeg)
+### Where it stands
 
-Most of the firmware was written with AI assistance. My part was designing the hardware layout, figuring out the system logic, and doing a lot of testing.
+The whole prototype works, but it's still a tangle of breadboard wires:
 
-**Next step:** Designing a custom PCB so everything works neatly without a tangle of breadboard wires.
+![The complete breadboard prototype on my desk](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/D1H5wjMaoqfsZfeTslugwWB4nIQcEzNR/7c136c36920a04aab8eab672ca3e5cd42e81a3cd019fee5cd757c799105e2eaa.jpeg)
+
+**Next step:** designing a custom PCB so everything works without the breadboard.
