@@ -22,7 +22,7 @@ This project is being built for [Hack Club Half Life](https://halflife.hackclub.
 - ESP32 development board
 - 8x8 LED matrix driven by two 74HC595 shift registers
 - SSD1306 128x64 I2C OLED display
-- Five push buttons
+- Five push buttons on the PCB design; the current firmware uses three for game and menu controls.
 - Buzzer
 - Li-Po battery and power components
 
@@ -42,9 +42,17 @@ This project is being built for [Hack Club Half Life](https://halflife.hackclub.
 | SW5 (Action) | GPIO 26 |
 | Buzzer control | GPIO 25 |
 
-The five buttons are wired between their GPIO pins and GND and use `INPUT_PULLUP`, so pressed is LOW. Check the pinout for your specific ESP32 board before wiring it. The buzzer is driven through a BC547 NPN transistor with a 1 kOhm base resistor; GPIO HIGH turns the buzzer on. Make sure the display, matrix drivers, and ESP32 share GND.
+The button pins use `INPUT_PULLUP` and are wired between GPIO and GND, so pressed is LOW. SW1 and SW2 are sampled only to track activity and wake the screensaver; they do not control a game or menu. Check the pinout for your specific ESP32 board before wiring it. The buzzer is driven through a BC547 NPN transistor with a 1 kOhm base resistor; GPIO HIGH turns the buzzer on. Make sure the display, matrix drivers, and ESP32 share GND.
 
-SW1/Up and SW2/Down are read but are not yet used by gameplay; current controls remain SW3/Left, SW4/Right, and SW5/Action.
+| Switch | GPIO | Planned function | Used by current firmware (yes/no) |
+| --- | --- | --- | --- |
+| SW1 | GPIO 33 | not used yet, reserved for Up/Down | No |
+| SW2 | GPIO 27 | not used yet, reserved for Up/Down | No |
+| SW3 | GPIO 14 | Left | Yes |
+| SW4 | GPIO 13 | Right | Yes |
+| SW5 | GPIO 26 | Action | Yes |
+
+Here, "used" means used as a game or menu control; SW1 and SW2 are still sampled for activity/screensaver wake.
 
 The 8x8 LED matrix was hand-soldered by me from a DIY kit.
 
@@ -65,6 +73,8 @@ The power design uses a Li-Po battery, a TP4056 charger module, a slide switch, 
 | Action | Pause; press again to resume | Flap |
 
 While paused, hold Action for about one second to return to the menu. In menus, Left and Right move through the options and Action selects one. Change the interface language in Settings; the selection is saved between reboots.
+
+Up and Down are reserved for a future full-D-pad update; they do not currently control Snake, Flappy Bird, or the menus.
 
 ## Build and upload
 

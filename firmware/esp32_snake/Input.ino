@@ -16,6 +16,7 @@ void exitPausedGameToMenu() {
 }
 
 void handleInput() {
+  // Up/Down are sampled for activity/screensaver wake, not game or menu controls.
   bool currentUp = digitalRead(BTN_UP_PIN);
   bool currentDown = digitalRead(BTN_DOWN_PIN);
   bool currentLeft = digitalRead(BTN_LEFT_PIN);

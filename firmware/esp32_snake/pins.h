@@ -9,8 +9,8 @@ constexpr uint8_t CLK_PIN = 18;
 constexpr uint8_t OLED_SDA_PIN = 21;
 constexpr uint8_t OLED_SCL_PIN = 22;
 
-constexpr uint8_t BTN_UP_PIN = 33;
-constexpr uint8_t BTN_DOWN_PIN = 27;
+constexpr uint8_t BTN_UP_PIN = 33;    // SW1 exists on the PCB; not used by game/menu controls yet.
+constexpr uint8_t BTN_DOWN_PIN = 27;  // SW2 exists on the PCB; not used by game/menu controls yet.
 constexpr uint8_t BTN_LEFT_PIN = 14;
 constexpr uint8_t BTN_RIGHT_PIN = 13;
 constexpr uint8_t BTN_ACTION_PIN = 26;
