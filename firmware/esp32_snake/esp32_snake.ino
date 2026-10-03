@@ -3,20 +3,12 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #include <esp_system.h>
+#include "pins.h"
 
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
 #define OLED_RESET -1
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
-
-const byte DATA_PIN = 23;
-const byte LATCH_PIN = 5;
-const byte CLK_PIN = 18;
-
-const byte BTN_LEFT_PIN = 32;
-const byte BTN_RIGHT_PIN = 33;
-const byte BTN_ACTION_PIN = 25;
-const byte BUZZER_PIN = 26;
 
 const unsigned long BUTTON_DEBOUNCE_MS = 120;
 const unsigned long IDLE_TIMEOUT_MS = 30000;
@@ -116,6 +108,8 @@ unsigned long lastDeathAnimTime = 0;
 bool lastLeftState = HIGH;
 bool lastRightState = HIGH;
 bool lastActionState = HIGH;
+bool lastUpState = HIGH;
+bool lastDownState = HIGH;
 unsigned long lastActivityTime = 0;
 unsigned long pauseActionPressTime = 0;
 bool pauseExitTriggered = false;
@@ -148,6 +142,8 @@ void setup() {
 
   pinMode(BTN_LEFT_PIN, INPUT_PULLUP);
   pinMode(BTN_RIGHT_PIN, INPUT_PULLUP);
+  pinMode(BTN_UP_PIN, INPUT_PULLUP);
+  pinMode(BTN_DOWN_PIN, INPUT_PULLUP);
   pinMode(BTN_ACTION_PIN, INPUT_PULLUP);
   pinMode(BUZZER_PIN, OUTPUT);
 
@@ -156,6 +152,7 @@ void setup() {
 
   randomSeed(esp_random()); 
 
+  Wire.begin(OLED_SDA_PIN, OLED_SCL_PIN);
   if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
     for (;;);
   }

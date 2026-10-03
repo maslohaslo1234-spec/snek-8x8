@@ -16,15 +16,20 @@ void exitPausedGameToMenu() {
 }
 
 void handleInput() {
+  bool currentUp = digitalRead(BTN_UP_PIN);
+  bool currentDown = digitalRead(BTN_DOWN_PIN);
   bool currentLeft = digitalRead(BTN_LEFT_PIN);
   bool currentRight = digitalRead(BTN_RIGHT_PIN);
   bool currentAction = digitalRead(BTN_ACTION_PIN);
 
-  if (currentLeft == LOW || currentRight == LOW || currentAction == LOW) {
+  if (currentUp == LOW || currentDown == LOW || currentLeft == LOW ||
+      currentRight == LOW || currentAction == LOW) {
     lastActivityTime = millis();
     if (isScreensaver) {
       isScreensaver = false;
       oledDirty = true;
+      lastUpState = currentUp;
+      lastDownState = currentDown;
       lastLeftState = currentLeft;
       lastRightState = currentRight;
       lastActionState = currentAction;
@@ -55,6 +60,8 @@ void handleInput() {
       pauseExitTriggered = false;
     }
 
+    lastUpState = currentUp;
+    lastDownState = currentDown;
     lastLeftState = currentLeft;
     lastRightState = currentRight;
     lastActionState = currentAction;
@@ -173,6 +180,8 @@ void handleInput() {
     }
   }
 
+  lastUpState = currentUp;
+  lastDownState = currentDown;
   lastLeftState = currentLeft;
   lastRightState = currentRight;
   lastActionState = currentAction;

@@ -1,8 +1,5 @@
 #include <Arduino.h>
 
-extern const byte DATA_PIN;
-extern const byte LATCH_PIN;
-extern const byte CLK_PIN;
 extern volatile byte displayBuffer[8];
 extern volatile byte currentScanRow;
 extern bool isScreensaver;

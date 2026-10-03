@@ -1,0 +1,25 @@
+# KiCad backups and local/cache files
+*-backups/
+fp-info-cache
+*.kicad_prl
+*.bak
+*.lck
+_autosave_*
+
+# Arduino build and IDE files
+build/
+.arduino/
+.pio/
+arduino_build_*/
+arduino_cache_*/
+*.ino.eep
+*.ino.hex
+*.ino.with_bootloader.bin
+*.elf
+*.map
+
+# Common editor and OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

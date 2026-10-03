@@ -22,24 +22,39 @@ This project is being built for [Hack Club Half Life](https://halflife.hackclub.
 - ESP32 development board
 - 8x8 LED matrix driven by two 74HC595 shift registers
 - SSD1306 128x64 I2C OLED display
-- Three push buttons
+- Five push buttons
 - Buzzer
-- Jumper wires 
+- Li-Po battery and power components
 
 ### Pin connections
 
 | Part | ESP32 pin |
 | --- | --- |
 | 74HC595 data | GPIO 23 |
-| 74HC595 latch | GPIO 5 |
+| 74HC595 latch | GPIO 16 |
 | 74HC595 clock | GPIO 18 |
-| Left button | GPIO 32 |
-| Right button | GPIO 33 |
-| Action button | GPIO 25 |
-| Buzzer | GPIO 26 |
-| OLED SDA / SCL | Default I2C pins for your ESP32 board |
+| OLED SDA | GPIO 21 |
+| OLED SCL | GPIO 22 |
+| SW1 (Up) | GPIO 33 |
+| SW2 (Down) | GPIO 27 |
+| SW3 (Left) | GPIO 14 |
+| SW4 (Right) | GPIO 13 |
+| SW5 (Action) | GPIO 26 |
+| Buzzer control | GPIO 25 |
 
-Buttons use the ESP32's internal pull-ups: connect each button between its GPIO pin and GND. Check the pinout for your specific ESP32 board before wiring it. Make sure the display, matrix drivers, and ESP32 share GND. Use a suitable driver if your buzzer or display needs more current or a different voltage than an ESP32 GPIO can provide.
+The five buttons are wired between their GPIO pins and GND and use `INPUT_PULLUP`, so pressed is LOW. Check the pinout for your specific ESP32 board before wiring it. The buzzer is driven through a BC547 NPN transistor with a 1 kOhm base resistor; GPIO HIGH turns the buzzer on. Make sure the display, matrix drivers, and ESP32 share GND.
+
+SW1/Up and SW2/Down are read but are not yet used by gameplay; current controls remain SW3/Left, SW4/Right, and SW5/Action.
+
+The 8x8 LED matrix was hand-soldered by me from a DIY kit.
+
+### Hardware (work in progress)
+
+[Schematic draft (PDF)](hardware/exports/snek_pcb_kicad.pdf)
+
+Status: schematic draft v0.1 (power, charging, 5 buttons, buzzer, OLED, LED matrix), PCB layout not started.
+
+The power design uses a Li-Po battery, a TP4056 charger module, a slide switch, and a 5V step-up converter. A Schottky diode is on the step-up output, which powers the ESP32 VIN pin.
 
 ## Controls
 
@@ -64,7 +79,10 @@ The firmware uses the ESP32 Arduino core 3.x timer API. If compilation fails aro
 
 - `firmware/esp32_snake/` - current ESP32 firmware
 - `legacy/arduino_snake/` - earlier Arduino firmware, kept for reference
+- `hardware/` - KiCad schematic/project files and `hardware/exports/` for schematic exports
 
 ## Project log
 
+## AI disclosure
 
+Most of the firmware was written with AI assistance. My own work is the hardware: soldering, wiring, electronics and schematic design, and the enclosure.
