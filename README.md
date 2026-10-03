@@ -92,7 +92,3 @@ The firmware uses the ESP32 Arduino core 3.x timer API. If compilation fails aro
 - `hardware/` - KiCad schematic/project files and `hardware/exports/` for schematic exports
 
 ## Project log
-
-## AI disclosure
-
-Most of the firmware was written with AI assistance. My own work is the hardware: soldering, wiring, electronics and schematic design, and the enclosure.
