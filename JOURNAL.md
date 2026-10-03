@@ -10,7 +10,7 @@
 
 | Week | Tier | Hours logged | Entries |
 | --- | --- | --- | --- |
-| Warm-up | Tier 1 | 13.5h | 3 |
+| Warm-up | Tier 1 | 14.5h | 3 |
 
 ## Contents
 
@@ -110,7 +110,7 @@ The whole prototype works, but it's still a tangle of breadboard wires:
 
 ### 2026-10-03 — # Designing my first PCB: From breadboard to KiCad
 
-**3h**
+**4h**
 
 # Designing my first PCB: From breadboard to KiCad
 
