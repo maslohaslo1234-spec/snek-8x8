@@ -56,9 +56,12 @@ Here, "used" means used as a game or menu control; SW1 and SW2 are still sampled
 
 The 8x8 LED matrix was hand-soldered by me from a DIY kit.
 
-### Hardware (work in progress)
+### Hardware 
 
-[Schematic draft (PDF)](hardware/exports/snek_pcb_kicad.pdf)
+[Schematic (PDF)](hardware/exports/snek_pcb_kicad.pdf)
+
+<img width="1097" height="899" alt="image" src="https://github.com/user-attachments/assets/a210c179-9c99-4f4d-a6c8-8cbaebf9ea78" />
+
 
 Status: schematic draft v0.1 (power, charging, 5 buttons, buzzer, OLED, LED matrix), PCB layout not started.
 
